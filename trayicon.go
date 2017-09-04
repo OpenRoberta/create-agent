@@ -64,7 +64,7 @@ func addRebootTrayElement() {
 func setupSysTrayReal() {
 
 	systray.SetIcon(icon.GetIcon())
-	mUrl := systray.AddMenuItem("Go to Arduino Create", "Arduino Create")
+	mUrl := systray.AddMenuItem("Go to OpenRoberta Lab", "OpenRoberta Lab")
 	mDebug := systray.AddMenuItem("Open debug console", "Debug console")
 	menuVer := systray.AddMenuItem("Agent version "+version+"-"+git_revision, "")
 	mPause := systray.AddMenuItem("Pause Plugin", "")
@@ -80,7 +80,7 @@ func setupSysTrayReal() {
 		}
 		systray.Quit()
 		*hibernate = true
-		log.Println("Restart becayse setup went wrong?")
+		log.Println("Restart because setup went wrong?")
 		restart("")
 	}()
 
@@ -102,7 +102,9 @@ func setupSysTrayReal() {
 	go func() {
 		for {
 			<-mUrl.ClickedCh
-			open.Start("http://create.arduino.cc")
+			//open.Start("https://lab.open-roberta.org")
+			//take origins string from main.go (package main)
+			open.Start(*origins)
 		}
 	}()
 }
@@ -116,7 +118,7 @@ func setupSysTrayHibernate() {
 	go func() {
 		<-mOpen.ClickedCh
 		*hibernate = false
-		log.Println("Restart for hubernation")
+		log.Println("Restart for hibernation")
 		systray.Quit()
 		restart("")
 	}()
