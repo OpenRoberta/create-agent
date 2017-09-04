@@ -43,9 +43,9 @@ import (
 func setupSysTray() {
 	runtime.LockOSThread()
 	if *hibernate == true {
-		systray.Run(setupSysTrayHibernate)
+		systray.Run(setupSysTrayHibernate, systray.Quit)
 	} else {
-		systray.Run(setupSysTrayReal)
+		systray.Run(setupSysTrayReal, systray.Quit)
 	}
 }
 
@@ -68,7 +68,7 @@ func setupSysTrayReal() {
 	mDebug := systray.AddMenuItem("Open debug console", "Debug console")
 	menuVer := systray.AddMenuItem("Agent version "+version+"-"+git_revision, "")
 	mPause := systray.AddMenuItem("Pause Plugin", "")
-	//mQuit := systray.AddMenuItem("Quit Plugin", "")
+	mQuit := systray.AddMenuItem("Quit Plugin", "")
 
 	menuVer.Disable()
 
@@ -84,11 +84,11 @@ func setupSysTrayReal() {
 		restart("")
 	}()
 
-	// go func() {
-	// 	<-mQuit.ClickedCh
-	// 	systray.Quit()
-	// 	exit()
-	// }()
+	go func() {
+	 	<-mQuit.ClickedCh
+		systray.Quit()
+	 	exit()
+	}()
 
 	go func() {
 		for {
