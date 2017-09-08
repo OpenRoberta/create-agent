@@ -15,3 +15,6 @@ echo "Categories=Application;Development;Internet;" >> "/usr/share/applications/
 
 
 chmod u+x "/usr/share/applications/ORCreateAgent.desktop"
+
+cp -r .arduino-create /home/$(whoami)/
+echo "{\"apilevel\":\"v1\",\"avrdude\":\"/home/$(whoami)/.arduino-create/arduino/avrdude/6.3.0-arduino9\",\"avrdude-6.3.0-arduino9\":\"/home/$(whoami)/.arduino-create/arduino/avrdude/6.3.0-arduino9\"}" > /home/$(whoami)/.arduino-create/installed.json
