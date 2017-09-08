@@ -7,5 +7,3 @@ snapshot/*
 public/
 artifacts*
 src/
-arduino-create-agent
-arduino-create-agent.exe

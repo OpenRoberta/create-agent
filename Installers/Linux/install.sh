@@ -1,20 +1,25 @@
 #!/bin/bash
 
 version="0.0.1"
-dir="$( pwd )"
+user=$(whoami)
+dir="/home/$user/ORCreateAgent"
+desktop_file="/home/$user/.local/share/applications/ORCreateAgent.desktop"
 
-echo "[Desktop Entry]" > "/usr/share/applications/ORCreateAgent.desktop"
-echo "Version=$version" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Name=Open Roberta Create Agent" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Exec=$dir/arduino-create-agent" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Path=$dir" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Icon=$dir/OR.png" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Terminal=false" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Type=Application" >> "/usr/share/applications/ORCreateAgent.desktop"
-echo "Categories=Application;Development;Internet;" >> "/usr/share/applications/ORCreateAgent.desktop"
+echo "[Desktop Entry]" > $desktop_file
+echo "Version=$version" >> $desktop_file
+echo "Name=Open Roberta Create Agent" >> $desktop_file
+echo "Exec=$dir/arduino-create-agent" >> $desktop_file
+echo "Path=$dir" >> $desktop_file
+echo "Icon=$dir/OR.png" >> $desktop_file
+echo "Terminal=false" >> $desktop_file
+echo "Type=Application" >> $desktop_file
+echo "Categories=Application;Development;Internet;" >> $desktop_file
 
 
-chmod u+x "/usr/share/applications/ORCreateAgent.desktop"
+chmod u+x $desktop_file
 
-cp -r .arduino-create /home/$(whoami)/
-echo "{\"apilevel\":\"v1\",\"avrdude\":\"/home/$(whoami)/.arduino-create/arduino/avrdude/6.3.0-arduino9\",\"avrdude-6.3.0-arduino9\":\"/home/$(whoami)/.arduino-create/arduino/avrdude/6.3.0-arduino9\"}" > /home/$(whoami)/.arduino-create/installed.json
+cp arduino-create-agent $dir
+cp config.ini $dir
+
+cp -r .arduino-create /home/$user/
+echo "{\"apilevel\":\"v1\",\"avrdude\":\"/home/$user/.arduino-create/arduino/avrdude/6.3.0-arduino9\",\"avrdude-6.3.0-arduino9\":\"/home/$user/.arduino-create/arduino/avrdude/6.3.0-arduino9\"}" > /home/$user/.arduino-create/installed.json
