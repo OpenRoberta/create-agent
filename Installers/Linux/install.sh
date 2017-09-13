@@ -18,6 +18,7 @@ echo "Categories=Application;Development;Internet;" >> $desktop_file
 
 chmod u+x $desktop_file
 
+mkdir $dir
 cp arduino-create-agent $dir
 cp config.ini $dir
 
