@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"text/template"
 	"time"
+	"encoding/json"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/arduino/arduino-create-agent/tools"
@@ -69,6 +70,15 @@ func launchSelfLater() {
 	log.Println("Going to launch myself 2 seconds later.")
 	time.Sleep(2 * 1000 * time.Millisecond)
 	log.Println("Done waiting 2 secs. Now launching...")
+}
+
+func listRobotHandler(c *gin.Context) {
+	portList, _ := GetList(false)
+	for _, element := range portList {
+				b, _ := json.Marshal(element)
+				c.Writer.Write(b)
+	}
+	log.Println(portList)
 }
 
 func main() {
@@ -229,6 +239,7 @@ func main() {
 			r.POST("/killbrowser", killBrowserHandler)
 			r.POST("/pause", pauseHandler)
 			r.POST("/update", updateHandler)
+			r.GET("/listrobots", listRobotHandler)
 
 			go func() {
 				// check if certificates exist; if not, use plain http
