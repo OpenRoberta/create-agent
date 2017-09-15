@@ -74,10 +74,8 @@ func launchSelfLater() {
 
 func listRobotHandler(c *gin.Context) {
 	portList, _ := GetList(false)
-	for _, element := range portList {
-				b, _ := json.Marshal(element)
-				c.Writer.Write(b)
-	}
+	b, _ := json.Marshal(portList)
+	c.Writer.Write(b)
 	log.Println(portList)
 }
 
