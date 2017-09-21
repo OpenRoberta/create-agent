@@ -13,7 +13,7 @@ echo "Path=$dir" >> $desktop_file
 echo "Icon=$dir/OR.png" >> $desktop_file
 echo "Terminal=false" >> $desktop_file
 echo "Type=Application" >> $desktop_file
-echo "Categories=Application;Development;Internet;" >> $desktop_file
+echo "Categories=Application;Development;Internet;Education;" >> $desktop_file
 
 
 chmod u+x $desktop_file
@@ -21,6 +21,7 @@ chmod u+x $desktop_file
 mkdir $dir
 cp arduino-create-agent $dir
 cp config.ini $dir
+cp OR.png $dir
 
 cp -r .arduino-create /home/$user/
 echo "{\"apilevel\":\"v1\",\"avrdude\":\"/home/$user/.arduino-create/arduino/avrdude/6.3.0-arduino9\",\"avrdude-6.3.0-arduino9\":\"/home/$user/.arduino-create/arduino/avrdude/6.3.0-arduino9\"}" > /home/$user/.arduino-create/installed.json
