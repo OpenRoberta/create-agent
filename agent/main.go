@@ -102,6 +102,7 @@ func main() {
 			Tools = tools.Tools{
 				Directory: directory,
 				IndexURL:  *indexURL,
+                Logger:    log.New(),
 			}
 			Tools.Init(requiredToolsAPILevel)
 
