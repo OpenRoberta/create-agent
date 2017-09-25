@@ -29,12 +29,35 @@ echo "Creating desktop shortcut..."
 
 cp $desktop_file /home/$user/Desktop
 
+desktop_file="/home/$user/.local/share/applications/ORCreateAgentUninstall.desktop"
+
+echo "Creating uninstall menu entry..."
+
+echo "[Desktop Entry]" > $desktop_file
+echo "Version=$version" >> $desktop_file
+echo "Name=Open Roberta Create Agent uninstall" >> $desktop_file
+echo "Exec=sh $dir/uninstall.sh" >> $desktop_file
+echo "Path=$dir" >> $desktop_file
+echo "Icon=$dir/OR.png" >> $desktop_file
+echo "Terminal=false" >> $desktop_file
+echo "Type=Application" >> $desktop_file
+echo "Categories=Application;Development;Internet;Education;" >> $desktop_file
+
+
+chmod u+x $desktop_file
+
+echo "Creating uninstall desktop shortcut..."
+
+cp $desktop_file /home/$user/Desktop
+
+
 echo "Copying data to $dir..."
 
 mkdir $dir
 cp arduino-create-agent $dir
 cp config.ini $dir
 cp OR.png $dir
+cp uninstall.sh $dir
 
 echo "Copying tools to /home/$user/.arduino-create..."
 cp -r .arduino-create /home/$user/
