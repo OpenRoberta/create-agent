@@ -1,8 +1,15 @@
 !include "MUI2.nsh"
 !include "WordFunc.nsh"
 
+!define MUI_LANGDLL_ALLLANGUAGES
+;Remember the installer language
+!define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
+!define MUI_LANGDLL_REGISTRY_KEY "Software\Modern UI Test" 
+!define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 Unicode true
 OutFile "ORCreateAgent-installer-v.0.0.1.exe"
+
+!insertmacro MUI_RESERVEFILE_LANGDLL
 
 XPStyle on
  
@@ -29,7 +36,23 @@ Name "OpenRoberta Create Agent"
 !insertmacro MUI_UNPAGE_CONFIRM 
 !insertmacro MUI_UNPAGE_INSTFILES 
 
-!insertmacro MUI_LANGUAGE English
+;Languages
+
+!insertmacro MUI_LANGUAGE "German" ;first language is the default language
+!insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "Spanish"
+!insertmacro MUI_LANGUAGE "Italian"
+!insertmacro MUI_LANGUAGE "Dutch"
+!insertmacro MUI_LANGUAGE "Danish"
+!insertmacro MUI_LANGUAGE "Russian"
+!insertmacro MUI_LANGUAGE "Portuguese"
+!insertmacro MUI_LANGUAGE "Polish"
+!insertmacro MUI_LANGUAGE "Czech"
+!insertmacro MUI_LANGUAGE "Finnish"
+!insertmacro MUI_LANGUAGE "Turkish"
+!insertmacro MUI_LANGUAGE "Catalan"
+
 
 Section "licenseLeave"
     SetOutPath "$INSTDIR"
@@ -47,6 +70,10 @@ Section "licenseLeave"
     WriteUninstaller "$INSTDIR\uninstall.exe"
     CreateShortCut "$SMPROGRAMS\ORCreateAgent-uninstall.lnk" "$INSTDIR\uninstall.exe"
 SectionEnd
+
+Function .onInit
+  !insertmacro MUI_LANGDLL_DISPLAY
+FunctionEnd
  
 Section "uninstall"
 	RMDir /r "$INSTDIR"
@@ -54,4 +81,9 @@ Section "uninstall"
     Delete "$SMPROGRAMS\ORCreateAgent-uninstal.lnk"
     Delete "$SMPROGRAMS\ORCreateAgent.lnk"
 	Delete "$DESKTOP\ORCreateAgent.lnk"
+	DeleteRegKey /ifempty HKCU "Software\Modern UI Test"
 SectionEnd
+
+Function un.onInit
+  !insertmacro MUI_UNGETLANGUAGE
+FunctionEnd
