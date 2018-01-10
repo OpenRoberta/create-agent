@@ -34,7 +34,7 @@ import (
 	"runtime"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/OpenRoberta/arduino-create-agent/icon"
+	"github.com/OpenRoberta/create-agent/icon"
 	"github.com/getlantern/systray"
 	"github.com/skratchdot/open-golang/open"
 	"go.bug.st/serial.v1"
@@ -66,7 +66,7 @@ func setupSysTrayReal() {
 	systray.SetIcon(icon.GetIcon())
 	mUrl := systray.AddMenuItem("Go to OpenRoberta Lab", "OpenRoberta Lab")
 	mDebug := systray.AddMenuItem("Open debug console", "Debug console")
-	menuVer := systray.AddMenuItem("Agent version "+version+"-"+git_revision, "")
+	menuVer := systray.AddMenuItem("Agent version "+version, "")
 	mPause := systray.AddMenuItem("Pause Plugin", "")
 	mQuit := systray.AddMenuItem("Quit Plugin", "")
 

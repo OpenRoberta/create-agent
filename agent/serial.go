@@ -9,7 +9,7 @@ import (
 	"time"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/OpenRoberta/arduino-create-agent/upload"
+	"github.com/OpenRoberta/create-agent/upload"
 )
 
 type writeRequest struct {

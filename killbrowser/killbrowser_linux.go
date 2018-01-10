@@ -4,7 +4,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/OpenRoberta/arduino-create-agent/utilities"
+	"github.com/OpenRoberta/create-agent/utilities"
 )
 
 func Find(process string) ([]byte, error) {

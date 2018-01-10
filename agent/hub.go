@@ -13,7 +13,7 @@ import (
 	"strings"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/OpenRoberta/arduino-create-agent/upload"
+	"github.com/OpenRoberta/create-agent/upload"
 	"github.com/kardianos/osext"
 )
 

@@ -23,7 +23,7 @@ import (
 
 	"golang.org/x/crypto/openpgp"
 
-	"github.com/OpenRoberta/arduino-create-agent/utilities"
+	"github.com/OpenRoberta/create-agent/utilities"
 	"github.com/blang/semver"
 	"github.com/xrash/smetrics"
 )

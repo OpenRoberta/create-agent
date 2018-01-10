@@ -4,7 +4,7 @@ import (
 	"errors"
 	"net/http"
 
-	"github.com/OpenRoberta/arduino-create-agent/killbrowser"
+	"github.com/OpenRoberta/create-agent/killbrowser"
 	"github.com/gin-gonic/gin"
 )
 

@@ -15,8 +15,8 @@ import (
 	"encoding/json"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/OpenRoberta/arduino-create-agent/tools"
-	"github.com/OpenRoberta/arduino-create-agent/utilities"
+	"github.com/OpenRoberta/create-agent/tools"
+	"github.com/OpenRoberta/create-agent/utilities"
 	"github.com/gin-gonic/gin"
 	cors "github.com/itsjamie/gin-cors"
 	"github.com/kardianos/osext"
@@ -25,7 +25,7 @@ import (
 )
 
 var (
-	version               = "0.0.1-dev" //don't modify it, Jenkins will take care (but we are not using jenkins, so...)
+	version               = "v1.0.0" //don't modify it, Jenkins will take care (but we are not using jenkins, so...)
 	git_revision          = "roberta"  //don't modify it, Jenkins will take care (no Jenkins! boo-hoo)
 	embedded_autoextract  = false
 	hibernate             = flag.Bool("hibernate", false, "start hibernated")
@@ -202,9 +202,9 @@ func main() {
 			//go d.run()
 
 			go discoverLoop()
-
+            
 			r := gin.New()
-
+            
 			socketHandler := wsHandler().ServeHTTP
 
 			extraOriginStr := "https://create.arduino.cc, http://create.arduino.cc, https://create-dev.arduino.cc, http://create-dev.arduino.cc, https://create-intel.arduino.cc, http://create-intel.arduino.cc"
