@@ -5,7 +5,7 @@ if [[ $EUID == 0 ]]
   exit
 fi
 
-version="0.0.1"
+version="1.0.0"
 user=$(whoami)
 dir="/home/$user/ORCreateAgent"
 desktop_file="/home/$user/.local/share/applications/ORCreateAgent.desktop"

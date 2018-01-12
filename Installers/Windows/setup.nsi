@@ -7,7 +7,7 @@
 !define MUI_LANGDLL_REGISTRY_KEY "Software\Modern UI Test" 
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 Unicode true
-OutFile "ORCreateAgent-installer-v.0.0.1.exe"
+OutFile "ORCreateAgent-installer-v.1.0.0.exe"
 
 !insertmacro MUI_RESERVEFILE_LANGDLL
 
